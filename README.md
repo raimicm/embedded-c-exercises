@@ -6,7 +6,9 @@ This repository contains self-directed C programming exercises exploring embedde
 
 In the `state_machine/` directory, the following state machine with 4 states is implemented:
 
-<img src="./state_machine/state_machine.png" width="40%" alt="State Machine" style="display: block; margin: 5 auto;">
+<div align="center">
+    <img src="./state_machine/state_machine.png" width="40%" alt="State Machine" style="display: block; margin: 5 auto;">
+</div>
 
 where $i$ is the user input value to trigger each state switch shown by the arrows.
 

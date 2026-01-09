@@ -11,11 +11,13 @@ typedef enum {
     BUFFER2
 } buffer_id;
 
+// buffer interface
 typedef struct {
     int (*read)(int idx);
     void (*write)(int idx, int val);
 } buffer_operations;
 
+// buffer1 operations
 int buffer1_read(int idx) {
     return buffer1[idx];
 }
@@ -24,6 +26,7 @@ void buffer1_write(int idx, int val) {
     buffer1[idx] = val;
 }
 
+// buffer2 operations
 int buffer2_read(int idx) {
     return *(buffer2[idx]);
 }
@@ -32,6 +35,7 @@ void buffer2_write(int idx, int val) {
     *(buffer2[idx]) = val;
 }
 
+// sets up buffer2
 int buffer2_init() {
     for (int i = 0; i < BUFFER_SIZE; i++) {
         int *p = (int*) malloc(sizeof(int));
@@ -44,12 +48,14 @@ int buffer2_init() {
     return 0;
 }
 
+// cleans up buffer2
 void buffer2_free() {
     for (int i = 0; i < BUFFER_SIZE; i++) {
         free(buffer2[i]);
     }
 }
 
+// dispatcher
 buffer_operations buf_ops[2] = {
     {buffer1_read, buffer1_write},
     {buffer2_read, buffer2_write},
